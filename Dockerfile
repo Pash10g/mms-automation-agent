@@ -1,7 +1,6 @@
 FROM ubuntu:16.04
-MAINTAINER Marco Bonezzi "marco@mongodb.com"
+MAINTAINER pavel duchovny "pavel.duchovny@mongodb.com"
 
-ENV REFRESHED_AT 2016-04-20
 RUN apt-get -qqy update && \
     apt-get install -qqy \
         curl \
@@ -11,6 +10,7 @@ RUN apt-get -qqy update && \
 
 
 #VOLUME /var/lib/mongodb-mms-automation
+RUN export $MMS_URL=https://cloud.mongodb.com
 ADD $MMS_URL/download/agent/automation/mongodb-mms-automation-agent-manager_latest_amd64.deb /root/mongodb-mms-automation-agent-manager_latest_amd64.deb
 
 RUN dpkg -i /root/mongodb-mms-automation-agent-manager_latest_amd64.deb
