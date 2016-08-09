@@ -11,7 +11,7 @@ RUN apt-get -qqy update && \
 
 #VOLUME /var/lib/mongodb-mms-automation
 ENV MMS_URL "https://cloud.mongodb.com"
-ONBUILD MMS_URL $MMS_URL
+ONBUILD ENV MMS_URL $MMS_URL
 ADD $MMS_URL/download/agent/automation/mongodb-mms-automation-agent_latest_amd64.deb /root/mongodb-mms-automation-agent-manager_latest_amd64.deb
 
 RUN dpkg -i /root/mongodb-mms-automation-agent-manager_latest_amd64.deb
